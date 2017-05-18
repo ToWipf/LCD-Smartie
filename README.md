@@ -1,6 +1,6 @@
 # LCD-Smartie
 
-# zeigt informationen zb: 
+## zeigt informationen zb: 
 - Uhrzeit / Datum
 - Aktuellen Liedtitel, Dauer uvm. (Winamp)
 - CPU Auslastung
@@ -16,7 +16,7 @@
 des Computers auf einen kleinen LCD Bildschirm an
 
 
-# kann mit den Tastern steuern:
+## kann mit den Tastern steuern:
 - Anzuzeigende Seite
 - Nächstes Lied / Letztes Lied
 - Lautstärke
