@@ -9,7 +9,7 @@
 - Temperaturen (HWINFO)
 - RSS Feeds
 - Festplatten
-- derzeitiger Upload und Download
+- derzeitiger Upload und Download (Netzwerk)
 - Gesammte Up/Downloadmenge (seit letzen neustart)
 - PC uptime
 
@@ -48,4 +48,4 @@ Erweitert um 11 Taster und viele kleine Fehlerbehebungen
 
 ## Optional:
    -  Bildschirmhelligkeit über 5kOhm Poti
-   -  Externer RST Taster ohne Pull down widerstand
+   -  Externer reset Taster ohne Pulldownwiderstand
