@@ -25,7 +25,7 @@ des Computers auf einen kleinen LCD Bildschirm an
 
 Programm dazu: http://lcdsmartie.sourceforge.net/
 
-Erweitert um 11Taster und viele kleinen Fehlerbehebungen
+Erweitert um 11 Taster und viele kleine Fehlerbehebungen
 
 ## Hardware:
 -   Arduino Nano
