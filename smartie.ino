@@ -1,6 +1,6 @@
 /*
     VERSION 5.2
-   Tobias Fritsch 12.06.2016
+   Wipf           12.06.2016
                   14.07.2016
                   07.11.2016
                   20.01.2017 V4 Laufzeitverbesserungeng Variablen normalisieren
@@ -22,7 +22,7 @@
       Pin A6 :
       Pin A7 :
 
-   Softwarte:
+   Software:
     LED Smartie 5.4
        matrix.dll COM8,9600
       Refresh intervall 50 ms
