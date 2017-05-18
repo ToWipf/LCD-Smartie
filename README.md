@@ -1,14 +1,27 @@
 # LCD-Smartie
 
-LCD Smartie zeigt informationen 
-zb. 
-- Uhr
-- Liedtitel
+# zeigt informationen zb: 
+- Uhrzeit / Datum
+- Aktuellen Liedtitel, Dauer uvm. (Winamp)
 - CPU Auslastung
-- Temperatur
-- ...
+- GPU Auslastung
+- RAM Verbrauch
+- Temperaturen (HWINFO)
+- RSS Feeds
+- Festplatten
+- derzeitiger Upload und Download
+- Gesammte Up/Downloadmenge (seit letzen neustart)
+- PC uptime
 
 des Computers auf einen kleinen LCD Bildschirm an
+
+
+# kann mit den Tastern steuern:
+- Anzuzeigende Seite
+- Nächstes Lied / Letztes Lied
+- Lautstärke
+- Theoretisch kann man jedes script oder Anwedung starten
+
 
 Programm dazu: http://lcdsmartie.sourceforge.net/
 
