@@ -1,6 +1,6 @@
 /*
     VERSION 5.2
-   Wipf			  12.06.2016
+   Wipf           12.06.2016
                   14.07.2016
                   07.11.2016
                   20.01.2017 V4 Laufzeitverbesserungeng Variablen normalisieren
@@ -8,40 +8,41 @@
                   27.01.2017 Tasterverhalten optimiert
                   09.02.2017 
                15/18.02.2017 V5 Funktionsaufteilung - Taster gehen nun nicht nur bei der Bildschirmaktualisierung
-
-   Hardware:
+Hardware:
     Arduino Nano
       Pin 0,1 USB DATEN
       Pin 2-12: Eingaenge // 10kOhm nach GND
+      Pin 13 LED leuchtet beim Tastendruck
       Pin A0 : HintergrundLED - einstellbar
-      Pin A1 :
-      Pin A2 :
-      Pin A3 :
-      Pin A4 : SDA
-      Pin A5 : SCL
-      Pin A6 :
-      Pin A7 :
-
-   Software:
+      Pin A1 : Frei
+      Pin A2 : Frei
+      Pin A3 : Frei
+      Pin A4 : SDA - LCD ueber i2c
+      Pin A5 : SCL - LCD ueber i2c
+      Pin A6 : Frei
+      Pin A7 : Frei
+      
+Software:
     LED Smartie 5.4
        matrix.dll COM8,9600
       Refresh intervall 50 ms
       Scroll intervall 600
       $MObutton(1)  -  $MObutton(:) und $MObutton(;) mit >= then XXXX
-
-   Optional:
+      
+Optional:
      Bildschirmhelligkeit über 5kOhm Poti
      Externer RST Taster ohne Pull down widerstand
 */
 #include <LiquidCrystal_I2C.h>
 
 #define VERSION "V 5.2"
-#define TASTERANZAHL 11
-#define LED A0 // PIN mit der Led -Hintergrund beleuchtung
+#define TASTERANZAHL 11 //Anzahl der externen Taster
+#define LED A0 // PIN mit der Led -Hintergrund beleuchtung + Led fuer den start (nicht notwendig)
+               // Bei mir die gelbe LED
 #define PAUSE 50000 //Wartezeit zwischen den eingaben
 unsigned int warten = 0;
 byte i = 0;
-byte pin;
+byte pin; // 0 oder 1
 byte IN[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 byte incoming, rxbyte, col, row;
 //uint8_t location;
