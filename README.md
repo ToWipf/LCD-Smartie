@@ -22,6 +22,8 @@ des Computers auf einen kleinen LCD Bildschirm an
 - Lautstärke
 - Theoretisch kann man jedes script oder Anwedung starten
 
+![Bild 1](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild1.jpg)
+![Bild 2](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild2.jpg)
 
 Programm dazu: http://lcdsmartie.sourceforge.net/
 
