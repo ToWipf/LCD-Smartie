@@ -1,5 +1,5 @@
-# LCD-Smartie
-
+# LCD-Smartie 
+***
 ## zeigt informationen zb: 
 - Uhrzeit / Datum
 - Aktuellen Liedtitel, Dauer uvm. (Winamp)
@@ -15,7 +15,7 @@
 
 des Computers auf einen kleinen LCD Bildschirm an
 
-
+***
 ## kann mit den Tastern steuern:
 - Anzuzeigende Seite
 - Nächstes Lied / Letztes Lied
@@ -29,6 +29,7 @@ Programm dazu: http://lcdsmartie.sourceforge.net/
 
 Erweitert um 11 Taster und viele kleine Fehlerbehebungen
 
+***
 ## Hardware:
 -   Arduino Nano
      - Pin 0,1 USB DATEN
@@ -41,17 +42,20 @@ Erweitert um 11 Taster und viele kleine Fehlerbehebungen
      - Pin A5 : SCL
      - Pin A6 :
      - Pin A7 :
-      
+
+***
 ## Software:
    - LED Smartie 5.4
    - matrix.dll COM8,9600
    - Refresh intervall 50 ms
    - scroll intervall 600
 
+***
 ## Optional:
    -  Bildschirmhelligkeit über 5kOhm Poti
    -  Externer reset Taster ohne Pulldownwiderstand
 
+***
 ## Code: (mit Kommentaren [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartie.ino))
 ```c++
 #include <LiquidCrystal_I2C.h>
