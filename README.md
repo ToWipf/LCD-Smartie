@@ -52,23 +52,18 @@ Erweitert um 11 Taster und viele kleine Fehlerbehebungen
    -  Bildschirmhelligkeit über 5kOhm Poti
    -  Externer reset Taster ohne Pulldownwiderstand
 
-## Code:
+## Code: (mit Kommentaren [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartie.ino))
 ```c++
 #include <LiquidCrystal_I2C.h>
-
 #define VERSION "V 5.2"
-#define TASTERANZAHL 11 //Anzahl der externen Taster
-#define LED A0 // PIN mit der Led -Hintergrund beleuchtung + Led fuer den start (nicht notwendig)
-               // Bei mir die gelbe LED
-#define PAUSE 50000 //Wartezeit zwischen den eingaben
+#define TASTERANZAHL 11
+#define LED A0
+#define PAUSE 50000
 unsigned int warten = 0;
 byte i = 0;
-byte pin; // 0 oder 1
+byte pin;
 byte IN[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 byte incoming, rxbyte, col, row;
-//uint8_t location;
-//uint8_t charMap[7];
-//byte temp;
 
 LiquidCrystal_I2C lcd(0x3F, 20, 4);
 
@@ -100,39 +95,33 @@ byte serial_getch()
   {
     taster();
   }
-  incoming = Serial.read(); // read the incoming byte:
+  incoming = Serial.read();
   return (byte) (incoming & 0xff);
 }
 
 void loop()
 {
-  //Auswertung
   {
     rxbyte = serial_getch();
-    if (rxbyte == 254) //Matrix Orbital uses 254 prefix for commands
+    if (rxbyte == 254)
     {
       switch (serial_getch())
       {
-        case 66: //backlight on (at previously set brightness)
+        case 66:
           digitalWrite(LED, HIGH);
           break;
         case 70:
           digitalWrite(LED, LOW);
           break;
-        case 71:  //set cursor position
-          col = (serial_getch() - 1);  //get column byte
+        case 71:
+          col = (serial_getch() - 1);
           row = (serial_getch());
           lcd.setCursor(col, row - 1);
           break;
-        case 72:  //cursor home (reset display position)
+        case 72:
           lcd.setCursor(0, 0);
           break;
-        //      case 86: //BEENDEN Des Programmes
-        //        lcd.clear();
-        //        lcd.setCursor(0, 0);
-        //        lcd.print("Smartie wurde Beendet");
-        //        delay(5000);
-        case 88:  //clear display, cursor home
+        case 88:
           lcd.clear();
           lcd.setCursor(0, 0);
           break;
@@ -141,49 +130,46 @@ void loop()
       return;
     }
 
-    switch (rxbyte)    //Zeichen anpassen
+    switch (rxbyte) 
     {
       case 0x02:
-        rxbyte = 0xC6; //  1/3  Block Altanativ: 0xA4
+        rxbyte = 0xC6;
         break;
       case 0x03:
-        rxbyte = 0xDB;  // 2/3 Block
+        rxbyte = 0xDB;
         break;
       case 0x01:
-        rxbyte = 0xFF;  // 3/3 block
+        rxbyte = 0xFF;
         break;
       case 0x04:
       case 0x05:
       case 0x06:
       case 0x07:
       case 0x08:
-        //   rxbyte = NULL;
         rxbyte = 0x20;
         break;
 
-      case 0xE4: //ASCII "a" umlaut
+      case 0xE4:
         rxbyte = 0xE1;
         break;
-      case 0xF1: //ASCII "n" tilde
+      case 0xF1:
         rxbyte = 0xEE;
         break;
-      case 0xF6: //ASCII "o" umlaut
+      case 0xF6:
         rxbyte = 0xEF;
         break;
-      case 0xFC: //ASCII "u" umlaut
+      case 0xFC:
         rxbyte = 0xF5;
         break;
-
-      case 0xA3: //sterling (pounds)--liere -etv eigenes zeichen
+      case 0xA3:
         rxbyte = 0xED;
         break;
-      case 0xB0: //degrees symbol
+      case 0xB0:
         rxbyte = 0xDF;
         break;
-      case 0xB5: //mu
+      case 0xB5:
         rxbyte = 0xE4;
         break;
-
       case 0xC4:
         rxbyte = 0xE1;
         break;
@@ -206,13 +192,13 @@ void loop()
       case 0xCF:
         rxbyte = 0x49;
         break;
-      case 0xD1: //"N" tilde -> plain "N"
+      case 0xD1:
         rxbyte = 0x43;
         break;
       case 0xD6:
         rxbyte = 0xEF;
         break;
-      case 0xD2: //"O" variants
+      case 0xD2:
       case 0xD3:
       case 0xD4:
       case 0xD5:
@@ -222,29 +208,25 @@ void loop()
       case 0xDC:
         rxbyte = 0xF5;
         break;
-      case 0xD9: //"U" variants
+      case 0xD9:
       case 0xDA:
       case 0xDB:
         rxbyte = 0x55;
         break;
-      case 0xDD: //"Y" acute -> "Y"
+      case 0xDD:
         rxbyte = 0x59;
         break;
-      /*    case 0xDF:
-            rxbyte = 0xE2;
-            break;
-      */
-      case 0xE0: //"a" variants except umlaut
+      case 0xE0:
       case 0xE1:
       case 0xE2:
       case 0xE3:
       case 0xE5:
         rxbyte = 0x61;
         break;
-      case 0xE7: //"c" cedilla -> "c"
+      case 0xE7:
         rxbyte = 0x63;
         break;
-      case 0xE8: //"e" variants
+      case 0xE8:
       case 0xE9:
       case 0xEA:
       case 0xEB:
@@ -263,7 +245,7 @@ void loop()
       case 0xF8:
         rxbyte = 0x6F;
         break;
-      case 0xF7: //division symbol
+      case 0xF7:
         rxbyte = 0xFD;
         break;
       case 0xF9: 
@@ -272,11 +254,9 @@ void loop()
         rxbyte = 0x75;
         break;
       default:
-        // FEHLERHAFTE AUSGABEN !
         break;
     }
     lcd.write(rxbyte);
-    //   lcd.print(rxbyte);
   }
 }
 
@@ -291,14 +271,11 @@ void taster(void)
       {
         digitalWrite(13, HIGH);
         Serial.write(i + 47); //pin 2 == 50 == ASCII "2"
-        //       delay(1);
         Serial.flush(); 
         warten = 0;
         break;
       }
     }
-  //  Serial.flush(); 
-  //  warten = 0;
 
    if (warten > PAUSE+10000)
    {
