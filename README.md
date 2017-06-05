@@ -13,7 +13,7 @@
 - Gesammte Up/Downloadmenge (seit letzen neustart)
 - PC uptime
 
-des Computers auf einen kleinen LCD Bildschirm an
+Zeigt diese Werte des Computers (Bei mir Windows 10 mit Ardunio nano) auf einen kleinen LCD Bildschirm an
 
 
 ## kann mit den Tastern steuern:
