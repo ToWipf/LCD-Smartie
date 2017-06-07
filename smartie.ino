@@ -1,14 +1,16 @@
 /*
-    VERSION 5.2
+    VERSION 5.5
    Wipf           12.06.2016
                   14.07.2016
                   07.11.2016
-                  20.01.2017 V4 Laufzeitverbesserungeng Variablen normalisieren
-                  23.01.2017 int to byte
+                  20.01.2017 V4 Laufzeitverbesserungeng
+                  23.01.2017 int zu byte
                   27.01.2017 Tasterverhalten optimiert
                   09.02.2017 
                15/18.02.2017 V5 Funktionsaufteilung - Taster gehen nun nicht nur bei der Bildschirmaktualisierung
-Hardware:
+                  07.06.2017 Kleine Aenderungen - weniger Speicher noetig
+
+   Hardware:
     Arduino Nano
       Pin 0,1 USB DATEN
       Pin 2-12: Eingaenge // 10kOhm nach GND
@@ -17,37 +19,33 @@ Hardware:
       Pin A1 : Frei
       Pin A2 : Frei
       Pin A3 : Frei
-      Pin A4 : SDA - LCD ueber i2c
-      Pin A5 : SCL - LCD ueber i2c
+      Pin A4 : SDA
+      Pin A5 : SCL
       Pin A6 : Frei
       Pin A7 : Frei
-      
-Software:
+
+   Softwarte:
     LED Smartie 5.4
        matrix.dll COM8,9600
       Refresh intervall 50 ms
       Scroll intervall 600
       $MObutton(1)  -  $MObutton(:) und $MObutton(;) mit >= then XXXX
-      
-Optional:
+
+   Optional:
      Bildschirmhelligkeit über 5kOhm Poti
      Externer RST Taster ohne Pull down widerstand
 */
 #include <LiquidCrystal_I2C.h>
 
-#define VERSION "V 5.2"
-#define TASTERANZAHL 11 //Anzahl der externen Taster
-#define LED A0 // PIN mit der Led -Hintergrund beleuchtung + Led fuer den start (nicht notwendig)
-               // Bei mir die gelbe LED
+#define VERSION "V 5.5"
+#define TASTERANZAHL 11
+#define LED A0 // PIN mit der Led -Hintergrund beleuchtung + Start / Gelbe LED
 #define PAUSE 50000 //Wartezeit zwischen den eingaben
 unsigned int warten = 0;
 byte i = 0;
-byte pin; // 0 oder 1
-byte IN[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+byte pin;
+byte IN;
 byte incoming, rxbyte, col, row;
-//uint8_t location;
-//uint8_t charMap[7];
-//byte temp;
 
 LiquidCrystal_I2C lcd(0x3F, 20, 4);
 
@@ -56,9 +54,10 @@ void setup()
   pinMode(LED, OUTPUT);
   digitalWrite(LED, HIGH);
   Serial.begin(9600);
-  for (pin = 2; pin <= 10; pin++)
+  for (pin = 2; pin < TASTERANZAHL+2; pin++)
   {
-    pinMode(pin , INPUT);
+//    pinMode(pin , INPUT_PULLUP);
+    pinMode(pin , INPUT);   
   }
   pinMode(13, OUTPUT);
   lcd.begin();
@@ -268,8 +267,9 @@ void taster(void)
   {
     for (i = 2; i < TASTERANZAHL + 2; i++)
     {
-      IN[i] = digitalRead(i);
-      if (IN[i] == HIGH)
+      IN = digitalRead(i);
+   //   if (IN == LOW)
+       if (IN == HIGH)     
       {
         digitalWrite(13, HIGH);
         Serial.write(i + 47); //pin 2 == 50 == ASCII "2"
@@ -293,5 +293,4 @@ void taster(void)
   }
   warten++;
 }
-
 
