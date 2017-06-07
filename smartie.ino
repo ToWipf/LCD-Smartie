@@ -19,12 +19,12 @@
       Pin A1 : Frei
       Pin A2 : Frei
       Pin A3 : Frei
-      Pin A4 : SDA
-      Pin A5 : SCL
+      Pin A4 : SDA - LCD ueber i2c
+      Pin A5 : SCL - LCD ueber i2c
       Pin A6 : Frei
       Pin A7 : Frei
 
-   Softwarte:
+   Software:
     LED Smartie 5.4
        matrix.dll COM8,9600
       Refresh intervall 50 ms
@@ -38,7 +38,7 @@
 #include <LiquidCrystal_I2C.h>
 
 #define VERSION "V 5.5"
-#define TASTERANZAHL 11
+#define TASTERANZAHL 11 //Anzahl der externen Taster
 #define LED A0 // PIN mit der Led -Hintergrund beleuchtung + Start / Gelbe LED
 #define PAUSE 50000 //Wartezeit zwischen den eingaben
 unsigned int warten = 0;
@@ -293,4 +293,3 @@ void taster(void)
   }
   warten++;
 }
-
