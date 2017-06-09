@@ -57,7 +57,7 @@ Erweitert um 11 Taster und viele kleine Fehlerbehebungen
    -  Externer reset Taster ohne Pulldownwiderstand
 
 
-## Code: (mit Kommentaren [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartie.ino))
+## Code: (als datei [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartie.ino))
 ```c
 /*
     VERSION 5.5
