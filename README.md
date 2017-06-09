@@ -25,6 +25,8 @@ Zeigt diese Werte des Computers (Bei mir Windows 10 mit Ardunio nano) auf einen 
 ![Bild 1](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild1.jpg)
 ***
 ![Bild 2](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild2.jpg)
+***
+![Bild 3](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild3.jpg)
 
 Programm dazu: http://lcdsmartie.sourceforge.net/
 
@@ -55,7 +57,6 @@ Erweitert um 11 Taster und viele kleine Fehlerbehebungen
 ## Optional:
    -  Bildschirmhelligkeit über 5kOhm Poti
    -  Externer reset Taster ohne Pulldownwiderstand
-
 
 ## Code: (als datei [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartie.ino))
 ```c
@@ -357,4 +358,6 @@ void taster(void)
 
 ```
 ***
-Wipf 03.06.2017
+## Code mit externen Tastern: (als datei [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartieExterneTasten.ino))
+
+Wipf 09.06.2017
