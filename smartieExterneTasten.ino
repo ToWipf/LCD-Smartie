@@ -42,9 +42,9 @@
 #define VERSION "V 6.2"
 #define TASTERANZAHL 11 //Anzahl der externen Taster
 #define LED A0 // PIN mit der Led -Hintergrund beleuchtung + Start / Gelbe LED
-#define ROTLED A1 //Zeigt ob spezial aktiv ist
-#define SPEZIN A2
-#define SPEZONOFF A3
+#define ROTLED A1  //Zeigt ob spezial aktiv ist
+#define SPEZIN A2  // Eingang spezial
+#define SPEZONOFF A3 //Wenn der eingang aktiv ist wird nach den zweiten spezialeingang geschaut, dieser sendet dann dein 'S' an den PC fals dieser aktiv ist
 #define PAUSE 50000 //Wartezeit zwischen den eingaben
 unsigned int warten = 0;
 byte i = 0;
@@ -85,7 +85,7 @@ byte serial_getch()
 {
   while (Serial.available() == 0)
   {
-    if (digitalRead(SPEZONOFF) == LOW) //Wenn der eingang aktiv ist wird nach den zweiten spezialeingang geschaut, dieser sendet dann dein 'S' an den PC fals dieser aktiv ist
+    if (digitalRead(SPEZONOFF) == LOW)
     {
       spzial();
     }
