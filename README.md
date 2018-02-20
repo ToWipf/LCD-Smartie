@@ -15,8 +15,8 @@
 
 Zeigt diese Werte des Computers (Bei mir Windows 10 mit Ardunio nano) auf einen kleinen LCD Bildschirm an
 
-
 ## kann mit den Tastern steuern:
+
 - Anzuzeigende Seite
 - Nächstes Lied / Letztes Lied
 - Lautstärke
@@ -32,8 +32,8 @@ Programm dazu: http://lcdsmartie.sourceforge.net/
 
 Erweitert um 11 Taster und viele kleine Fehlerbehebungen
 
-
 ## Hardware:
+
 -   Arduino Nano
      - Pin 0,1 USB DATEN
      - Pin 2-12: Eingaenge // 10kOhm nach GND
@@ -46,20 +46,20 @@ Erweitert um 11 Taster und viele kleine Fehlerbehebungen
      - Pin A6 :
      - Pin A7 :
 
-
 ## Software:
+
    - LED Smartie 5.4
    - matrix.dll COM8,9600
    - Refresh intervall 50 ms
    - scroll intervall 600
 
-
 ## Optional:
+
    -  Bildschirmhelligkeit über 5kOhm Poti
    -  Externer reset Taster ohne Pulldownwiderstand
 
 ## Code: (als datei [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartie.ino))
-```c
+``` c
 /*
     VERSION 5.5
    Wipf           12.06.2016
@@ -358,6 +358,7 @@ void taster(void)
 
 ```
 ***
+
 ## Code mit externen Tastern: (als datei [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartieExterneTasten.ino))
 
-Wipf 09.06.2017
+Tobias Fritsch  Aug 2016 - Feb 2018
