@@ -34,29 +34,33 @@ Erweitert um 11 Taster und viele kleine Fehlerbehebungen
 
 ## Hardware:
 
--   Arduino Nano
-     - Pin 0,1 USB DATEN
-     - Pin 2-12: Eingaenge // 10kOhm nach GND
-     - Pin A0 : HintergrundLED - einstellbar
-     - Pin A1 :
-     - Pin A2 :
-     - Pin A3 :
-     - Pin A4 : SDA
-     - Pin A5 : SCL
-     - Pin A6 :
-     - Pin A7 :
+  - Arduino Nano
+   - Pin 0,1 USB DATEN
+   - Pin 2-12: Eingaenge // 10kOhm nach GND
+ - Pin A0 : HintergrundLED - einstellbar
+ - Pin A1 :
+ - Pin A2 :
+ - Pin A3 :
+ - Pin A4 : SDA
+ - Pin A5 : SCL
+ - Pin A6 :
+ - Pin A7 :
 
 ## Software:
 
-   - LED Smartie 5.4
-   - matrix.dll COM8,9600
-   - Refresh intervall 50 ms
-   - scroll intervall 600
+ - LED Smartie 5.4
+ - matrix.dll COM8,9600
+ - Refresh intervall 50 ms
+ - scroll intervall 600
 
 ## Optional:
 
-   -  Bildschirmhelligkeit über 5kOhm Poti
-   -  Externer reset Taster ohne Pulldownwiderstand
+ -  Bildschirmhelligkeit über 5kOhm Poti
+ -  Externer reset Taster ohne Pulldownwiderstand
+   
+## Fehler:
+ 
+ - bei "þ" Zeichen
 
 ## Code: (als datei [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartie.ino))
 ``` c
