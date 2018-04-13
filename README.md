@@ -24,9 +24,9 @@ Zeigt diese Werte des Computers (Bei mir Windows 10 mit Ardunio nano) auf einen 
 
 ## Hardware:
 
-  - Arduino Nano
-   - Pin 0,1 USB DATEN
-   - Pin 2-12: Eingaenge // 10kOhm nach GND
+ - Arduino Nano
+ - Pin 0,1 USB DATEN
+ - Pin 2-12: Eingaenge // 10kOhm nach GND
  - Pin A0 : HintergrundLED - einstellbar
  - Pin A1 :
  - Pin A2 :
@@ -52,6 +52,8 @@ Zeigt diese Werte des Computers (Bei mir Windows 10 mit Ardunio nano) auf einen 
  
  - bei "þ" Zeichen
  
+## Bilder: 
+
 ![Bild 1](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild1.jpg)
 ***
 ![Bild 2](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild2.jpg)
