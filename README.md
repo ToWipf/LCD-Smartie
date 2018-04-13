@@ -1,6 +1,6 @@
 # LCD-Smartie 
 
-## zeigt informationen zb: 
+## zeigt informationen z.B. : 
 - Uhrzeit / Datum
 - Aktuellen Liedtitel, Dauer uvm. (Winamp)
 - CPU Auslastung
