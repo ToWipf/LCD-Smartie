@@ -22,16 +22,6 @@ Zeigt diese Werte des Computers (Bei mir Windows 10 mit Ardunio nano) auf einen 
 - Lautstärke
 - Theoretisch kann man jedes script oder Anwedung starten
 
-![Bild 1](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild1.jpg)
-***
-![Bild 2](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild2.jpg)
-***
-![Bild 3](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild3.jpg)
-
-Programm dazu: http://lcdsmartie.sourceforge.net/
-
-Erweitert um 11 Taster und viele kleine Fehlerbehebungen
-
 ## Hardware:
 
   - Arduino Nano
@@ -61,6 +51,17 @@ Erweitert um 11 Taster und viele kleine Fehlerbehebungen
 ## Fehler:
  
  - bei "þ" Zeichen
+ 
+![Bild 1](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild1.jpg)
+***
+![Bild 2](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild2.jpg)
+***
+![Bild 3](https://github.com/ToWipf/LCD-Smartie/blob/master/Bild3.jpg)
+
+Programm dazu: http://lcdsmartie.sourceforge.net/
+
+Erweitert um 11 Taster und viele kleine Fehlerbehebungen
+ 
 
 ## Code: (als datei [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartie.ino))
 ``` c
