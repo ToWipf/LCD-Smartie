@@ -366,6 +366,6 @@ void taster(void)
 ```
 ***
 
-## Code mit externen Tastern: (als datei [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartieExterneTasten.ino))
+### Code mit externen Tastern: (als zur ino [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartieExterneTasten.ino))
 
-Tobias Fritsch  Aug 2016 - Feb 2018
+Tobias Fritsch  August 2016 - April 2018
