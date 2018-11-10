@@ -50,7 +50,7 @@ Zeigt diese Werte des Computers (Bei mir Windows 10 mit Ardunio nano) auf einen 
    
 ## Fehler:
  
- - bei "þ" Zeichen
+ - beim Ausgeben des "þ" Zeichen
  
 ## Bilder: 
 
@@ -366,6 +366,6 @@ void taster(void)
 ```
 ***
 
-### Code mit externen Tastern: (als zur ino [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartieExterneTasten.ino))
+### Code mit externen Tastern: [hier](https://github.com/ToWipf/LCD-Smartie/blob/master/smartieExterneTasten.ino)
 
 Tobias Fritsch  August 2016 - April 2018
