@@ -1,5 +1,5 @@
 /*
-    VERSION 6.7
+    VERSION 6.7.1
    Wipf           12.06.2016
                   14.07.2016
                   07.11.2016
@@ -12,9 +12,10 @@
                   08.06.2017 Groser Umbau auf Arduino Mini - Negative eingaenge
                   17.07.2017 Offlinemenue
                   22.10.2017 Bug gefunden bei þ zeichen
+                  01.02.2019 LCD Display von 0X3F auf 0X27
 
    Hardware:
-    Arduino Nano
+    Arduino Mini
       Pin 0,1 USB DATEN
       Pin 2-12: Eingaenge // 10kOhm nach GND
       Pin 13 LED leuchtet beim Tastendruck
@@ -57,7 +58,7 @@ int wartespezial = 0;
 
 void offlinemenue(void);
 
-LiquidCrystal_I2C lcd(0x3F, 20, 4);
+LiquidCrystal_I2C lcd(0x27, 20, 4);
 
 void setup()
 {
@@ -398,6 +399,29 @@ void offlinemenue(void)
       }
       digitalWrite(13, LOW);
       offlinemenue();
+
+    }
+
+    if (digitalRead(5) == LOW && digitalRead(11) == LOW && digitalRead(10) == LOW)//+ = >
+    {
+      lcd.setCursor(8, 3);
+      lcd.print(":");
+      delay(500);
+      lcd.print(":");
+      delay(500);
+      lcd.print(":");
+      delay(500);
+      lcd.print(":");
+      if (digitalRead(6) == LOW && digitalRead(9) == LOW && digitalRead(10) == HIGH)// - <<
+      {
+        lcd.setCursor(13, 3);
+        lcd.print("2");
+        delay(7000);
+        lcd.setCursor(2, 3);
+        lcd.print("              ");
+      }
+      lcd.setCursor(8, 3);
+      lcd.print("    ");
     }
   }
   delay(100);
