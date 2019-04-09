@@ -12,8 +12,9 @@
 - derzeitiger Upload und Download (Netzwerk)
 - Gesammte Up/Downloadmenge (seit letzen neustart)
 - PC uptime
+- Files
 
-Zeigt diese Werte des Computers (Bei mir Windows 10 mit Ardunio nano) auf einen kleinen LCD Bildschirm an
+Zeigt diese Werte des Computers über USB auf einen LCD Bildschirm an
 
 ## kann mit den Tastern steuern:
 
