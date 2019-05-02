@@ -51,7 +51,7 @@ Zeigt diese Werte des Computers über USB auf einen LCD Bildschirm an
    
 ## Fehler:
  
- - beim Ausgeben des "þ" Zeichen
+ - beim Ausgeben des 'þ' Zeichen
  
 ## Bilder: 
 
