@@ -1,5 +1,5 @@
 /*
-    VERSION 7.0 ZEIGT NUR AN - kiene taster nötig! - Nur Arduino und display !
+    VERSION 7.0 ZEIGT NUR AN - Keine Taster nötig! - Nur Arduino und display!
    Wipf           12.06.2016
                   14.07.2016
                   07.11.2016
