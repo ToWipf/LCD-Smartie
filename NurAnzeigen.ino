@@ -1,5 +1,5 @@
 /*
-    VERSION 7.0 ZEIGT NUR AN - Keine Taster nötig! - Nur Arduino und display!
+  ZEIGT NUR AN - Keine Taster nötig! - Nur Arduino und display!
    Wipf           12.06.2016
                   14.07.2016
                   07.11.2016
@@ -12,7 +12,6 @@
                   08.06.2017 Groser Umbau auf Arduino Mini - Negative eingaenge
                   17.07.2017 Offlinemenue
                   07.07.2017 NUR Display
-
    Hardware:
     Arduino Nano
       Pin 0,1 USB DATEN
