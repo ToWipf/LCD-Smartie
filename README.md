@@ -10,7 +10,7 @@
 - RSS Feeds
 - Festplatten
 - derzeitiger Upload und Download (Netzwerk)
-- Gesammte Up/Downloadmenge (seit letzen neustart)
+- Gesamte Up/Downloadmenge (seit letzen neustart)
 - PC uptime
 - Files
 
