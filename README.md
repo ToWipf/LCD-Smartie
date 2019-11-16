@@ -1,22 +1,20 @@
 # LCD-Smartie 
 
+Zeigt Werte des Computers über USB auf einen LCD Bildschirm an.
+
 ## zeigt Informationen wie z.B. :
 - Uhrzeit / Datum
 - Aktuellen Liedtitel, Dauer uvm. (Winamp)
-- CPU Auslastung
-- GPU Auslastung
-- RAM Verbrauch
+- RAM, CPU Auslastung
+- GPU Auslastung (HWINFO)
 - Temperaturen (HWINFO)
 - RSS Feeds
-- Festplatten
-- derzeitiger Upload und Download (Netzwerk)
-- Gesamte Up/Downloadmenge (seit letzen neustart)
-- PC uptime
+- derzeitiger Upload und Download (pro Netzwerkkarte)
+- Up/Downloadmenge
+- uptime
 - Files
 
-Zeigt diese Werte des Computers über USB auf einen LCD Bildschirm an
-
-## steuert mit den Tasten (optional):
+## steuert mit Tasten (optional):
 
 - Anzuzeigende Seite
 - Nächstes Lied / Letztes Lied
@@ -25,22 +23,12 @@ Zeigt diese Werte des Computers über USB auf einen LCD Bildschirm an
 
 ## Hardware:
 
- - Arduino Nano
-   - Pin 0,1 USB DATEN
-   - Pin 2-12: Eingaenge // 10kOhm nach GND
-   - Pin A0 : HintergrundLED - einstellbar
-   - Pin A1 :
-   - Pin A2 :
-   - Pin A3 :
-   - Pin A4 : SDA
-   - Pin A5 : SCL
-   - Pin A6 :
-   - Pin A7 :
+ - Arduino Nano, Mico, Uno, ...
  - LCD Panel mit i2c 4x20 oder 2x16
 
 ## Software:
 
- - LED Smartie 5.4
+ - LED Smartie 5.4 http://lcdsmartie.sourceforge.net/
    - matrix.dll COM8,9600
    - Refresh intervall 50 ms
    - scroll intervall 600
@@ -48,11 +36,6 @@ Zeigt diese Werte des Computers über USB auf einen LCD Bildschirm an
 ## Optional:
 
  -  Bildschirmhelligkeit über 5kOhm Poti
- -  Externer reset Taster ohne Pulldownwiderstand
-   
-## Fehler:
- 
- - beim Ausgeben des 'þ' Zeichen
  
 ## Bilder: 
 
@@ -62,8 +45,4 @@ Zeigt diese Werte des Computers über USB auf einen LCD Bildschirm an
 ***
 ![Bild 3](https://github.com/ToWipf/LCD-Smartie/blob/master/pic/Bild3.jpg)
 
-Programm: http://lcdsmartie.sourceforge.net/
-
-Erweitert um Taster und viele kleine Fehlerbehebungen
- 
 Tobias Fritsch  August 2016 - Juni 2019
