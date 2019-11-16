@@ -21,7 +21,7 @@ Zeigt diese Werte des Computers über USB auf einen LCD Bildschirm an
 - Anzuzeigende Seite
 - Nächstes Lied / Letztes Lied
 - Lautstärke
-- Theoretisch kann man jedes script oder Anwedung starten
+- Anwedungen starten
 
 ## Hardware:
 
