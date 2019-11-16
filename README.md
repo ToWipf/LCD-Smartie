@@ -1,6 +1,6 @@
 # LCD-Smartie 
 
-## zeigt informationen z.B. : 
+## zeigt Informationen wie z.B. :
 - Uhrzeit / Datum
 - Aktuellen Liedtitel, Dauer uvm. (Winamp)
 - CPU Auslastung
@@ -16,7 +16,7 @@
 
 Zeigt diese Werte des Computers über USB auf einen LCD Bildschirm an
 
-## kann mit den Tastern steuern:
+## steuert mit den Tasten (optional):
 
 - Anzuzeigende Seite
 - Nächstes Lied / Letztes Lied
@@ -26,23 +26,24 @@ Zeigt diese Werte des Computers über USB auf einen LCD Bildschirm an
 ## Hardware:
 
  - Arduino Nano
- - Pin 0,1 USB DATEN
- - Pin 2-12: Eingaenge // 10kOhm nach GND
- - Pin A0 : HintergrundLED - einstellbar
- - Pin A1 :
- - Pin A2 :
- - Pin A3 :
- - Pin A4 : SDA
- - Pin A5 : SCL
- - Pin A6 :
- - Pin A7 :
+   - Pin 0,1 USB DATEN
+   - Pin 2-12: Eingaenge // 10kOhm nach GND
+   - Pin A0 : HintergrundLED - einstellbar
+   - Pin A1 :
+   - Pin A2 :
+   - Pin A3 :
+   - Pin A4 : SDA
+   - Pin A5 : SCL
+   - Pin A6 :
+   - Pin A7 :
+ - LCD Panel mit i2c 4x20 oder 2x16
 
 ## Software:
 
  - LED Smartie 5.4
- - matrix.dll COM8,9600
- - Refresh intervall 50 ms
- - scroll intervall 600
+   - matrix.dll COM8,9600
+   - Refresh intervall 50 ms
+   - scroll intervall 600
 
 ## Optional:
 
@@ -61,8 +62,8 @@ Zeigt diese Werte des Computers über USB auf einen LCD Bildschirm an
 ***
 ![Bild 3](https://github.com/ToWipf/LCD-Smartie/blob/master/pic/Bild3.jpg)
 
-Programm dazu: http://lcdsmartie.sourceforge.net/
+Programm: http://lcdsmartie.sourceforge.net/
 
-Erweitert um 11 Taster und viele kleine Fehlerbehebungen
+Erweitert um Taster und viele kleine Fehlerbehebungen
  
 Tobias Fritsch  August 2016 - Juni 2019
