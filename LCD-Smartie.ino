@@ -13,6 +13,7 @@
                   22.10.2017 Bug gefunden bei þ zeichen
                   01.02.2019 LCD Display von 0X3F auf 0X27
                   30.06.2019 customCharLoad1
+                  02.04.2020 ueberarbeiten
 
    Hardware:
     Arduino Mini/Nano
@@ -40,13 +41,15 @@
 */
 #include <LiquidCrystal_I2C.h>
 
-#define VERSION "V 6.7"
-#define TASTERANZAHL 11 //Anzahl der externen Taster
+#define ADDRESS 0X27
+#define VERSION " V105"
+#define TASTERANZAHL 9 //Anzahl der externen Taster
 #define LED A0          // PIN mit der Led -Hintergrund beleuchtung + Start / Gelbe LED
 #define ROTLED A1       //Zeigt ob spezial aktiv ist
 #define SPEZIN A2       // Eingang spezial
-#define SPEZONOFF A3    //Wenn der eingang aktiv ist wird nach den zweiten spezialeingang geschaut, dieser sendet dann dein 'S' an den PC fals dieser aktiv ist
+#define SPEZONOFF A3    //Wenn der eingang aktiv ist wird nach den zweiten spezialeingang geschaut, dieser sendet dann dein 'S' an den PC falls dieser aktiv ist
 #define PAUSE 50000     //Wartezeit zwischen den eingaben
+
 unsigned int warten = 0;
 byte i = 0;
 byte pin;
@@ -57,17 +60,13 @@ byte col;
 byte row;
 int wartespezial = 0;
 
-void offlinemenue(void);
+LiquidCrystal_I2C lcd(ADDRESS, 20, 4);
 
-LiquidCrystal_I2C lcd(0x3F, 20, 4);
-
-void setup()
-{
+void setup() {
   pinMode(LED, OUTPUT);
   digitalWrite(LED, HIGH);
   Serial.begin(9600);
-  for (pin = 2; pin < TASTERANZAHL + 2; pin++)
-  {
+  for (pin = 2; pin < TASTERANZAHL + 2; pin++) {
     pinMode(pin, INPUT_PULLUP);
   }
   pinMode(13, OUTPUT);
@@ -79,7 +78,7 @@ void setup()
   lcd.clear();
   lcd.backlight();
 
-  byte customCharLoad1[] = {
+  byte customCharLoad0[] = {
     B10000,
     B10000,
     B10000,
@@ -89,7 +88,7 @@ void setup()
     B11111,
     B10000
   };
-  byte customCharLoad2[] = {
+  byte customCharLoad1[] = {
     B11100,
     B11100,
     B11100,
@@ -99,11 +98,10 @@ void setup()
     B11111,
     B11100
   };
+  // customChar 2 - 7 nicht genutzt
 
-  // customChar 3 - 7 nicht genutzt
-
-  lcd.createChar(0, customCharLoad1);
-  lcd.createChar(1, customCharLoad2);
+  lcd.createChar(0, customCharLoad0);
+  lcd.createChar(1, customCharLoad1);
 
   lcd.setCursor(2, 0);
   lcd.print("Smartie by Wipf");
@@ -112,19 +110,12 @@ void setup()
   lcd.print(" Tasten ");
   lcd.setCursor(15, 3);
   lcd.print(VERSION);
-  if (digitalRead(2) == LOW)
-  {
-    offlinemenue();
-  }
   digitalWrite(LED, LOW);
 }
 
-byte serial_getch()
-{
-  while (Serial.available() == 0)
-  {
-    if (digitalRead(SPEZONOFF) == LOW)
-    {
+byte serial_getch() {
+  while (Serial.available() == 0) {
+    if (digitalRead(SPEZONOFF) == LOW) {
       spzial();
     }
     taster();
@@ -183,7 +174,7 @@ void loop()
       case 0x01:
         rxbyte = 0xFF; // 3/3 block
         break;
-      /////////////LEERZEICHEN das beim Beeenden nicht setsamrme zeichen kommen;
+      /////////////LEERZEICHEN das alle Chars defined sind;
       case 0x04:
       case 0x05:
       case 0x06:
@@ -206,8 +197,7 @@ void loop()
       case 0xFC: //ASCII "u" umlaut
         rxbyte = 0xF5;
         break;
-
-      case 0xA3: //sterling (pounds)--liere -etv eigenes zeichen
+      case 0xA3: //sterling (pounds)--liere
         rxbyte = 0xED;
         break;
       case 0xB0: //degrees symbol
@@ -216,8 +206,7 @@ void loop()
       case 0xB5: //mu
         rxbyte = 0xE4;
         break;
-
-      case 0xC4: //A Umlaut-----gros------------------------------
+      case 0xC4: //"A" Umlaut gross
         rxbyte = 0xE1;
         break;
       case 0xC0: //"A" variants
@@ -242,7 +231,7 @@ void loop()
       case 0xD1: //"N" tilde -> plain "N"
         rxbyte = 0x43;
         break;
-      case 0xD6: // O Umlaut-----gros-------------------------------------
+      case 0xD6: //"O" Umlaut gross
         rxbyte = 0xEF;
         break;
       case 0xD2: //"O" variants
@@ -252,7 +241,7 @@ void loop()
       case 0xD8:
         rxbyte = 0x4F;
         break;
-      case 0xDC: // U Umlaut----gros----------------------------------------
+      case 0xDC: //"U" Umlaut gross
         rxbyte = 0xF5;
         break;
       case 0xD9: //"U" variants
@@ -309,27 +298,21 @@ void loop()
         break;
     }
     lcd.write(rxbyte); //otherwise a plain char so we print it to lcd
-    //   lcd.print(rxbyte);
+    // lcd.print(rxbyte);
   }
 }
 
-void spzial(void)
-{
-  if (digitalRead(SPEZIN) == LOW)
-  {
+void spzial(void) {
+  if (digitalRead(SPEZIN) == LOW) {
     digitalWrite(ROTLED, HIGH);
-    if (wartespezial % 10000 == 0)
-    {
+    if (wartespezial % 10000 == 0) {
       Serial.write(83);
       wartespezial = 0;
     }
-  }
-  else
-  {
+  } else {
     digitalWrite(ROTLED, LOW);
   }
-  if (wartespezial > 10005)
-  {
+  if (wartespezial > 10005) {
     digitalWrite(ROTLED, HIGH);
     wartespezial = 0;
   }
@@ -338,13 +321,10 @@ void spzial(void)
 
 void taster(void)
 {
-  if (warten > PAUSE) // Damit nicht der tastendruck zu oft angenommen wird
-  {
-    for (i = 2; i < TASTERANZAHL + 2; i++)
-    {
+  if (warten > PAUSE) { // Damit nicht der tastendruck zu oft angenommen wird
+    for (i = 2; i < TASTERANZAHL + 2; i++) {
       IN = digitalRead(i);
-      if (IN == LOW)
-      {
+      if (IN == LOW) {
         digitalWrite(13, HIGH);
         Serial.write(i + 47); //pin 2 == 50 == ASCII "2"
         //       delay(1);
@@ -354,103 +334,13 @@ void taster(void)
       }
     }
     //  Serial.flush();
-    //  warten = 0;
 
-    if (warten > PAUSE + 10000)
-    {
+    if (warten > PAUSE + 10000) {
       warten = PAUSE;
     }
   }
-  if (warten == PAUSE)
-  {
+  if (warten == PAUSE) {
     digitalWrite(13, LOW);
   }
   warten++;
-}
-
-void offlinemenue(void)
-{
-  digitalWrite(ROTLED, HIGH);
-  lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("[1] Zufall 10000");
-  lcd.setCursor(0, 1);
-  lcd.print("[2] Zufall 60");
-  lcd.setCursor(0, 2);
-  lcd.print("[3] Kontrolle");
-  while (1)
-  {
-
-    if (digitalRead(2) == LOW) //Fall Zufallszahl== Taste 1
-    {
-      lcd.setCursor(8, 3);
-      lcd.print("    ");
-      lcd.setCursor(8, 3);
-      lcd.print(rand() % 10000);
-    }
-
-    if (digitalRead(3) == LOW) //Fall Zufallszahl== Taste 2
-    {
-      lcd.setCursor(8, 3);
-      lcd.print("    ");
-      lcd.setCursor(9, 3);
-      lcd.print(rand() % 60);
-    }
-    if (digitalRead(4) == LOW) //Fall Zufallszahl== Taste 3
-    {
-      unsigned long i = 0;
-      lcd.clear();
-      lcd.setCursor(0, 0);
-      lcd.print("Zum Beenden die");
-      lcd.setCursor(0, 1);
-      lcd.print("1 Taste druecken");
-      while (digitalRead(2) != LOW) //1Taste
-      {
-        if (digitalRead(SPEZONOFF) == LOW)
-        {
-          lcd.setCursor(8, 2);
-          lcd.print(" AN!  ");
-
-          if (digitalRead(SPEZIN) == LOW)
-          {
-            i++;
-            digitalWrite(13, HIGH);
-          }
-        }
-        else
-        {
-          lcd.setCursor(8, 2);
-          lcd.print(" AUS! ");
-        }
-        lcd.setCursor(8, 3);
-        lcd.print(i);
-        delay(100);
-      }
-      digitalWrite(13, LOW);
-      offlinemenue();
-    }
-
-    if (digitalRead(5) == LOW && digitalRead(11) == LOW && digitalRead(10) == LOW) //+ = >
-    {
-      lcd.setCursor(8, 3);
-      lcd.print(":");
-      delay(500);
-      lcd.print(":");
-      delay(500);
-      lcd.print(":");
-      delay(500);
-      lcd.print(":");
-      if (digitalRead(6) == LOW && digitalRead(9) == LOW && digitalRead(10) == HIGH) // - <<
-      {
-        lcd.setCursor(13, 3);
-        lcd.print("2");
-        delay(7000);
-        lcd.setCursor(2, 3);
-        lcd.print("              ");
-      }
-      lcd.setCursor(8, 3);
-      lcd.print("    ");
-    }
-  }
-  delay(100);
 }
