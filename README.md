@@ -1,5 +1,7 @@
 # LCD-Smartie 
 
+Neues Projekt: https://github.com/ToWipf/jasmarty
+
 Zeigt Werte des Computers über USB auf einen LCD Bildschirm an.
 
 ## zeigt Informationen wie z.B. :
